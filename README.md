@@ -39,3 +39,11 @@ The build output in `docs/.vitepress/dist` is a static site. Any of these work:
 - **GitHub Pages:** free for public repositories, needs a paid plan for private ones. Set `GDD_BASE=/<repo-name>/` when building so links resolve under the sub-path.
 
 The `check` workflow in `.github/workflows/` runs the checker and a build on every push and pull request.
+
+**Current setup:** the site is live at https://hansfigo.github.io/hex-gdd/, served by GitHub Pages from the `gh-pages` branch. Publish a new version with:
+
+```bash
+npm run deploy
+```
+
+It runs the checker, builds with the right sub-path and force-pushes the build to `gh-pages`. The `pages.yml` workflow does the same in CI once GitHub Actions can run on the account; to switch to it, set Pages → Source to "GitHub Actions".
