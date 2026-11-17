@@ -1,0 +1,67 @@
+:root {
+  --gdd-gray-bg: #f1efe8;   --gdd-gray-fg: #444441;   --gdd-gray-line: #888780;
+  --gdd-blue-bg: #e6f1fb;   --gdd-blue-fg: #0c447c;
+  --gdd-amber-bg: #faeeda;  --gdd-amber-fg: #633806;
+  --gdd-green-bg: #eaf3de;  --gdd-green-fg: #27500a;
+  --gdd-orange-bg: #faece7; --gdd-orange-fg: #712b13;
+  --gdd-red-bg: #fcebeb;    --gdd-red-fg: #791f1f;
+  --gdd-coral-bg: #faece7;  --gdd-coral-line: #993c1d; --gdd-coral-fg: #712b13;
+  --gdd-teal-bg: #e1f5ee;   --gdd-teal-line: #0f6e56;  --gdd-teal-fg: #085041;
+  --gdd-tune-bg: #fac77555;
+}
+.dark {
+  --gdd-gray-bg: #444441;   --gdd-gray-fg: #f1efe8;   --gdd-gray-line: #b4b2a9;
+  --gdd-blue-bg: #0c447c;   --gdd-blue-fg: #e6f1fb;
+  --gdd-amber-bg: #633806;  --gdd-amber-fg: #faeeda;
+  --gdd-green-bg: #27500a;  --gdd-green-fg: #eaf3de;
+  --gdd-orange-bg: #712b13; --gdd-orange-fg: #faece7;
+  --gdd-red-bg: #791f1f;    --gdd-red-fg: #fcebeb;
+  --gdd-coral-bg: #712b13;  --gdd-coral-line: #f0997b; --gdd-coral-fg: #faece7;
+  --gdd-teal-bg: #085041;   --gdd-teal-line: #5dcaa5;  --gdd-teal-fg: #e1f5ee;
+  --gdd-tune-bg: #85440b88;
+}
+
+/* Status badges: IDEA gray, DESIGNED blue, IN PROGRESS amber, IMPLEMENTED green,
+   CHANGED — CODE PENDING orange, CUT red. */
+.status-badge {
+  display: inline-block;
+  padding: 1px 8px;
+  border-radius: 999px;
+  font-size: 0.75em;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  line-height: 1.6;
+  white-space: nowrap;
+}
+.status-idea { background: var(--gdd-gray-bg); color: var(--gdd-gray-fg); }
+.status-designed { background: var(--gdd-blue-bg); color: var(--gdd-blue-fg); }
+.status-in-progress { background: var(--gdd-amber-bg); color: var(--gdd-amber-fg); }
+.status-implemented { background: var(--gdd-green-bg); color: var(--gdd-green-fg); }
+.status-changed-code-pending { background: var(--gdd-orange-bg); color: var(--gdd-orange-fg); }
+.status-cut { background: var(--gdd-red-bg); color: var(--gdd-red-fg); }
+
+/* Cut features: name struck through in the index. */
+.vp-doc tr.row-cut td:first-child { text-decoration: line-through; color: var(--vp-c-text-3); }
+
+/* Superseded or obsolete decisions stay readable but recede. */
+.vp-doc tr.row-superseded td { color: var(--vp-c-text-3); }
+.vp-doc tr.row-superseded td:nth-child(3) { text-decoration: line-through; }
+
+/* Decision ids and references. */
+.decision-id { font-family: var(--vp-font-family-mono); font-size: 0.9em; white-space: nowrap; }
+.vp-doc a.decision-ref { font-family: var(--vp-font-family-mono); font-size: 0.9em; white-space: nowrap; text-decoration: none; }
+.vp-doc tr:target td { background: var(--vp-c-brand-soft); }
+
+/* Tuning values. */
+mark.tune {
+  background: var(--gdd-tune-bg);
+  color: inherit;
+  padding: 0 4px;
+  border-radius: 4px;
+  font-size: 0.8em;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+}
+
+/* Wide tables scroll instead of squeezing. */
+.vp-doc table { display: block; overflow-x: auto; }

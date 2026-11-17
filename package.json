@@ -1,0 +1,15 @@
+{
+  "name": "hermes-express-gdd",
+  "private": true,
+  "type": "module",
+  "description": "Hermes Express game design document: spec-driven GDD and feature notes, built as a website.",
+  "scripts": {
+    "dev": "vitepress dev docs",
+    "build": "vitepress build docs",
+    "preview": "vitepress preview docs",
+    "check": "python3 scripts/check_docs.py docs --strict"
+  },
+  "devDependencies": {
+    "vitepress": "1.6.3"
+  }
+}
