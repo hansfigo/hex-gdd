@@ -45,15 +45,6 @@ Before each normal shift (except Day 1) the player picks one of three trials. A 
 | New job interval, intensity 1 / 2 / 3 | 3.5 / 2.5 / 1.6 [TUNE] | s | |
 | Shift lightning per danger level | see [day-cycle-and-storm](../day-cycle-and-storm/design.md) rule 2 (D-062) | — | Danger 3 should hurt but not wreck a careful driver in one shift |
 
-## Events (logic → UI)
-The logic raises these; UI and feedback ([ui-feedback](../ui-feedback/design.md)) only listen and read. Names are engine-neutral.
-
-| Event / state | Data | When |
-|---|---|---|
-| `trialOffered` | three trials (danger, value, intensity, name) | Start is pressed on Day 2–3 |
-| `trialChosen` | trial | the player picks; the shift loads |
-| state | currentTrial | read by the HUD dials |
-
 ## Edge cases
 - A Zeus ward protects the van from shift lightning at every danger level ([packages](../packages/design.md)).
 - On Day 2 Chance packages appear for the first time (D-044) whatever the trial.

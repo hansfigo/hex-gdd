@@ -41,18 +41,6 @@ Packages appear at pickup markers around the map (the Crazy Taxi model). The pla
 | Failed Chance (scam) delivery damage | 2 (D-035) | HP | Same as a lightning strike |
 | Interact leniency: zone padding / after leaving / before entering | 1 / 0.4 / 0.3 | m / s / s | Missed E presses at full speed |
 
-## Events (logic → UI)
-The logic raises these; UI and feedback ([ui-feedback](../ui-feedback/design.md)) only listen and read. Names are engine-neutral.
-
-| Event / state | Data | When |
-|---|---|---|
-| `jobSpawned` / `jobRemoved` | job id, type, tier, failChance, pay, pickup, destination | a job appears or disappears |
-| `jobPickedUp` | job id | E picks it up |
-| `delivered` | job id, type, paid | a Safe or Zeus delivery is paid |
-| `scamResolved` | job id, success, paid | a Chance delivery is rolled; pay or damage is applied when the reveal reports done |
-| `zeusWardStarted` / `zeusWardEnded` | seconds / reason (delivered, expired) | Zeus's package is picked up / the ward ends |
-| state | openJobs, carriedJobs, todayEarnings, nearestTarget | read by markers, HUD earnings and the arrow |
-
 ## Edge cases
 - A failed Chance delivery can wreck the van when HP is 2 or less (D-037).
 - A failed Chance delivery in overtime pays nothing; overtime money already earned is lost if the wreck follows.

@@ -2,7 +2,7 @@
 
 **Status:** designed · **Updated:** 2026-11-17 · [GDD](../../GDD.md)
 
-What the player sees, hears and feels when something happens. Each row is triggered by an event from the logic (listed in each feature's "Events (logic → UI)" section), so the UI programmer can build this table without touching gameplay code. Kept to graybox quality: simple shapes, flashes and placeholder sounds. Serves **Whimsical and comedic** and **Bro thinks he's smart** (every outcome is readable).
+What the player sees, hears and feels when something happens. Each row names the moment that triggers it. Kept to graybox quality: simple shapes, flashes and placeholder sounds. Serves **Whimsical and comedic** and **Bro thinks he's smart** (every outcome is readable).
 
 ## Rules
 1. Feedback never changes the rules: money, HP and timers are settled by the logic; feedback only shows them.

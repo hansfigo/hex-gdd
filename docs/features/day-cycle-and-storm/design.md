@@ -49,18 +49,6 @@ Every normal day is a short shift that ends at a clock, followed by a tempting o
 | Hit grace after a strike | 1 | s | |
 | Map boundary margin / countdown | 60 m / 5 s [TUNE] | m / s | |
 
-## Events (logic → UI)
-The logic raises these; UI and feedback ([ui-feedback](../ui-feedback/design.md)) only listen and read. Names are engine-neutral.
-
-| Event / state | Data | When |
-|---|---|---|
-| `shiftTick` | timeLeft, timeLeft01 | every frame during the shift |
-| `overtimeStarted` | — | the clock reaches 0 on a normal day |
-| `strikeWarning` | position, radius, seconds, kind (normal, big) | a strike is scheduled |
-| `strikeLanded` | position, kind, hitVan | the strike lands |
-| `boundaryWarning` / `boundaryCleared` | secondsLeft | the van leaves / returns to the map |
-| state | inOvertime, overtimeSeconds, hqUsable | read by the HUD and the HQ marker |
-
 ## Edge cases
 - Pausing freezes the clock and the storm.
 - A strike during the Zeus ward is turned away; it does not use the lightning shield.

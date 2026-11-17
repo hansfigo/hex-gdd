@@ -31,16 +31,6 @@ An arcade van: grippy, quick to answer, glued to the road, never flips, and stil
 | Boost start kick | +3 [TUNE] | m/s | |
 | Off-road top-speed loss | 25 [TUNE] | % | |
 
-## Events (logic → UI)
-The logic raises these; UI and feedback ([ui-feedback](../ui-feedback/design.md)) only listen and read. Names are engine-neutral.
-
-| Event / state | Data | When |
-|---|---|---|
-| state | speed01 (0 at rest, 1 at top speed), steering, grounded | read every frame by camera and speed effects |
-| `driftStarted` / `driftEnded` | — | drift begins / ends above the minimum speed |
-| `boostStarted` / `boostEnded` | — | nitro starts / stops burning |
-| `nitroChanged` | bars, charge | nitro fills or burns |
-
 ## Edge cases
 - Drift below the minimum speed does nothing.
 - Nitro and drift together are allowed.

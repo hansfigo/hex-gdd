@@ -15,6 +15,9 @@ const features: [string, string][] = [
   ['Combo (cut)', 'combo'],
 ]
 
+// Pages kept in the repo but hidden from the site for now (UI guide).
+const HIDDEN = ['features/ui-screens', 'features/ui-feedback', 'features/ui-input', 'features/hud']
+
 // Status words as written in the Markdown (lower case, read by scripts/check_docs.py).
 const STATUSES = ['changed — code pending', 'in progress', 'implemented', 'designed', 'idea', 'cut']
 const STATUS_RE = STATUSES.map((s) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|')
@@ -26,6 +29,11 @@ function badge(status: string): string {
 
 // Presentation only: the Markdown stays plain so the checker and readers of the raw files are unaffected.
 function decorate(html: string): string {
+  // Hidden pages: drop their feature-index rows and turn links to them into plain text.
+  const hid = HIDDEN.map((h) => h.replace('features/', ''))
+  html = html.replace(/<tr>[\s\S]*?<\/tr>/g, (row) =>
+    hid.some((h) => row.includes(`${h}/design`) && row.includes('>design</a>')) ? '' : row)
+  html = html.replace(/<a href="[^"]*(ui-screens|ui-feedback|ui-input|hud)\/design[^"]*">([\s\S]*?)<\/a>/g, '$2')
   // Status in index tables and in each feature's "**Status:** ..." header.
   html = html.replace(new RegExp(`<td>(${STATUS_RE})</td>`, 'g'), (_m, s) => `<td>${badge(s)}</td>`)
   html = html.replace(
@@ -62,8 +70,10 @@ export default defineConfig({
   description: 'Spec-driven game design document for Hermes Express.',
   lang: 'en',
   cleanUrls: true,
+  // Links to hidden pages are turned into plain text by decorate(); do not fail the build on them.
+  ignoreDeadLinks: [/(ui-screens|ui-feedback|ui-input|hud)\/design/],
   lastUpdated: true,
-  srcExclude: ['archive/**'],
+  srcExclude: ['archive/**', ...HIDDEN.map((h) => `${h}/**`)],
   markdown: {
     config(md) {
       const render = md.renderer.render.bind(md.renderer)
@@ -89,15 +99,6 @@ export default defineConfig({
       {
         text: 'Features',
         items: features.map(([text, slug]) => ({ text, link: `/features/${slug}/design` })),
-      },
-      {
-        text: 'UI guide',
-        items: [
-          { text: 'Screens and wireframes', link: '/features/ui-screens/design' },
-          { text: 'Feedback', link: '/features/ui-feedback/design' },
-          { text: 'Input', link: '/features/ui-input/design' },
-          { text: 'Shift HUD', link: '/features/hud/design' },
-        ],
       },
     ],
     outline: { level: [2, 3], label: 'On this page' },
