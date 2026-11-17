@@ -28,6 +28,16 @@ The van has 10 visible hit points. Crashes, lightning and failed Chance deliveri
 | Wreck income kept | 50 | % | Is a wreck painful but not a run-ender? |
 | Dented / badly damaged at | 6 / 3 | HP | |
 
+## Events (logic → UI)
+The logic raises these; UI and feedback ([ui-feedback](../ui-feedback/design.md)) only listen and read. Names are engine-neutral.
+
+| Event / state | Data | When |
+|---|---|---|
+| `hpChanged` | hp, delta, source (crash, bump, lightning, bigStrike, scam, boundary, repair) | any HP change |
+| `stageChanged` | stage (0 clean, 1 dented, 2 badly damaged) | HP crosses 6 or 3 |
+| `wreckStarted` / `wreckResolved` | — / overtimeForfeited, kept | HP reaches 0 / the wreck pop-up is closed |
+| `repairPurchased` | hpBefore, price | Repair is pressed in the Garage |
+
 ## Edge cases
 - A hit that would take HP below 0 stops at 0 and triggers the wreck once.
 - Carried HP at the start of a day is at least 1 even after a wreck sequence, so the van always moves.

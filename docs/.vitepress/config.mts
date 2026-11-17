@@ -12,7 +12,6 @@ const features: [string, string][] = [
   ['Driving', 'driving'],
   ['Upgrades', 'upgrades'],
   ['Boss day: Charon', 'boss-charon'],
-  ['Shift HUD', 'hud'],
   ['Combo (cut)', 'combo'],
 ]
 
@@ -90,6 +89,15 @@ export default defineConfig({
       {
         text: 'Features',
         items: features.map(([text, slug]) => ({ text, link: `/features/${slug}/design` })),
+      },
+      {
+        text: 'UI guide',
+        items: [
+          { text: 'Screens and wireframes', link: '/features/ui-screens/design' },
+          { text: 'Feedback', link: '/features/ui-feedback/design' },
+          { text: 'Input', link: '/features/ui-input/design' },
+          { text: 'Shift HUD', link: '/features/hud/design' },
+        ],
       },
     ],
     outline: { level: [2, 3], label: 'On this page' },

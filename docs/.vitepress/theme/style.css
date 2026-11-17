@@ -8,6 +8,8 @@
   --gdd-coral-bg: #faece7;  --gdd-coral-line: #993c1d; --gdd-coral-fg: #712b13;
   --gdd-teal-bg: #e1f5ee;   --gdd-teal-line: #0f6e56;  --gdd-teal-fg: #085041;
   --gdd-tune-bg: #fac77555;
+  --wf-bg: #f6f6f4; --wf-box: #e4e3df; --wf-panel: #d9d8d3; --wf-button: #c9c8c2;
+  --wf-overlay: #2c2c2a33; --wf-line: #888780; --wf-hatch: #00000010; --wf-text: #2c2c2a; --wf-text-2: #5f5e5a;
 }
 .dark {
   --gdd-gray-bg: #444441;   --gdd-gray-fg: #f1efe8;   --gdd-gray-line: #b4b2a9;
@@ -19,6 +21,8 @@
   --gdd-coral-bg: #712b13;  --gdd-coral-line: #f0997b; --gdd-coral-fg: #faece7;
   --gdd-teal-bg: #085041;   --gdd-teal-line: #5dcaa5;  --gdd-teal-fg: #e1f5ee;
   --gdd-tune-bg: #85440b88;
+  --wf-bg: #232321; --wf-box: #2f2f2d; --wf-panel: #3a3a37; --wf-button: #4a4a46;
+  --wf-overlay: #00000055; --wf-line: #888780; --wf-hatch: #ffffff10; --wf-text: #f1efe8; --wf-text-2: #b4b2a9;
 }
 
 /* Status badges: IDEA gray, DESIGNED blue, IN PROGRESS amber, IMPLEMENTED green,

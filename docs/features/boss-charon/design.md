@@ -33,6 +33,14 @@ If the run quota is met after Day 3, Day 4 is Charon's day. Instead of a profit 
 | Rubber band per soul ahead/behind | 0.06 | factor | |
 | Rubber band limits | 0.6–1.25 | factor | |
 
+## Events (logic → UI)
+The logic raises these; UI and feedback ([ui-feedback](../ui-feedback/design.md)) only listen and read. Names are engine-neutral.
+
+| Event / state | Data | When |
+|---|---|---|
+| `raceChanged` | hermes, iris, target | either side gains a soul |
+| `raceEnded` | winner (hermes, iris) | someone reaches 12, or the clock or a wreck ends the day |
+
 ## Edge cases
 - A scam delivery that fails gives no soul.
 - Both players cannot reach 12 at once; the first event decides.

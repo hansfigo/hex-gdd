@@ -1,6 +1,6 @@
 # Hermes Express — Game Design Document
 
-**Version:** 0.4 · **Updated:** 2026-11-17 · [Features](#feature-index) · [Decisions](#decisions) · [Change log](#change-log)
+**Version:** 0.5 · **Updated:** 2026-11-17 · [Features](#feature-index) · [Decisions](#decisions) · [Change log](#change-log)
 
 This document and `features/` are the source of truth for the design (D-024). The Unity build is a prototype and a reference for starting numbers, not the spec. The original Indonesian GDD is kept unedited in `archive/GDD-v0-2026-10-23.md` (in the repository, not on the website).
 
@@ -45,6 +45,9 @@ Garage (repair, pick a card) → shift: pick up → deliver → money
 | Driving | designed | MVP | Arcade steer, gas, brake + E; optional drift (Space, handling only) and nitro (Shift, refills from deliveries and over time) | [design](features/driving/design.md) |
 | Trials | designed | MVP | Before Day 2 and 3, pick 1 of 3 trials: danger (lightning), value (pay), intensity (jobs); Day 1 fixed Standard | [design](features/trials/design.md) |
 | Shift HUD | designed | MVP | Time bar / OVERTIME, today's earnings, HP + shield, nitro, direction arrow; no quota bar | [design](features/hud/design.md) |
+| UI screens | designed | MVP | Every screen and overlay in graybox: menu, Garage hub, report, card draw, trial select, pop-ups, pause, game over; with wireframes | [design](features/ui-screens/design.md) |
+| UI feedback | designed | MVP | Event → visual, camera, sound table: scam reveal, wreck, overtime, hits, speed feel | [design](features/ui-feedback/design.md) |
+| UI input | designed | MVP | Keyboard + gamepad map (racing layout), menu controls, key-prompt tokens | [design](features/ui-input/design.md) |
 | First-run tutorial | idea | MVP | Day 1 script: two Safe packages, then Zeus, scripted strikes, blessing lost | — |
 | Map: Olympus | idea | MVP | One map, HQ, houses, palaces, Electrical Plant; a new, smaller, more city-like map replaces the prototype's; layout not specified | — |
 
@@ -146,6 +149,13 @@ IDs run in sequence and are never reused. A superseded decision stays in the tab
 | D-065 | 2026-11-17 | Taking the free card is mandatory (Start is locked until one is taken); a wrecked day still gives the card | skippable pick; no card after a wreck | A free card has no downside to refuse; a wreck is punished enough | [upgrades](features/upgrades/design.md) |
 | D-066 | 2026-11-17 | Boss day spawns only Safe packages, shown as souls | all package types | The race is about routes and speed | [boss-charon](features/boss-charon/design.md) |
 | D-067 | 2026-11-17 | Shift HUD: time bar / OVERTIME, today's earnings, HP + shield, nitro, direction arrow; no quota bar | also a quota pace bar | Keep the HUD to what changes the next decision | [hud](features/hud/design.md) |
+| D-068 | 2026-11-17 | Keyboard and gamepad in the MVP; gamepad uses the racing layout: RT gas, LT brake, left stick steer, A pick up / deliver, B drift, LB nitro, Start pause | keyboard only; Forza-style (A drift, X interact); Hot Wheels-style (A nitro) | Common racing convention; the core action stays on the main face button | [ui-input](features/ui-input/design.md) |
+| D-069 | 2026-11-17 | Garage = one hub screen with the van in the middle; report and card draw open as overlays in order | a step-by-step wizard of screens | Matches the prototype, which already works | [ui-screens](features/ui-screens/design.md) |
+| D-070 | 2026-11-17 | Feedback kept: scam slot machine and wreck slow motion, speed feel (FOV, wind lines, camera lean), Hermes's start-of-day bark. Cut: slow motion and camera swing on pickup | keep the pickup reveal | Slow motion stays special; pickup must not break a fast-paced flow | [ui-feedback](features/ui-feedback/design.md) |
+| D-071 | 2026-11-17 | MVP UI is graybox only; the spec carries HTML/CSS graybox wireframes, not final art | finished UI art | Programmers can build and test the flow before any art exists | [ui-screens](features/ui-screens/design.md) |
+| D-072 | 2026-11-17 | Pause menu: Resume, Controls, Settings, Quit to menu (with a confirm) | Restart run; Resume and Quit only | Covers the basics without a mid-run restart shortcut | [ui-screens](features/ui-screens/design.md) |
+| D-073 | 2026-11-17 | Settings: master / music / effects volume; fullscreen or windowed and resolution. No rebinding, no vibration | also vibration toggle; tutorial toggle | The minimum a Mac game needs | [ui-screens](features/ui-screens/design.md), [ui-input](features/ui-input/design.md) |
+| D-074 | 2026-11-17 | In-game text is English only | Indonesian; both with a language switch | One language for the MVP, same as the docs | [ui-screens](features/ui-screens/design.md) |
 
 ## Open questions
 - **Assumptions to confirm:** design questions were settled on 2026-11-17 (D-030 to D-045). What remains are prototype tuning numbers: run quota $600, 120 s boss shift, Safe pay and the 0.65 multiplier, open pickups and spawn interval, storm numbers, HP amounts and repair price, Gamble chance, reroll price, card and relic numbers, Iris's pace; plus the audience and the time bar on the HUD.
@@ -155,6 +165,7 @@ IDs run in sequence and are never reused. A superseded decision stays in the tab
 - **Other open items from the old GDD:** third hazard (needed or not); anti-pillars; playtest success criteria; a tuning-numbers table (this version puts numbers in each feature note).
 
 ## Change log
+**0.5 (2026-11-17):** UI guide for UI programmers: ui-screens with graybox wireframes, ui-feedback, ui-input, and an Events (logic → UI) section in every gameplay spec (D-068 to D-074).
 **0.4 (2026-11-17):** Made implementable: interact, job mix, pay formula, shift lightning, escalation formula, Garage and boss rules, HUD spec (D-058 to D-067).
 **0.3 (2026-11-17):** Lightning shield with refill, trial reward budget, driving with drift and nitro (D-050 to D-057).
 **0.2 (2026-11-17):** Assumption review: D-030 to D-045 logged, remaining prototype numbers marked [TUNE]. Trials designed (D-046 to D-049); screens and flow added.

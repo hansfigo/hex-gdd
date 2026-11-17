@@ -28,6 +28,16 @@ A run is three normal days that all count toward one profit quota, then a boss d
 | Boss shift length | 120 [TUNE] | s | See [boss-charon](../boss-charon/design.md) |
 | Net income floor | 0 | $ | A day never subtracts from profit |
 
+## Events (logic → UI)
+The logic raises these; UI and feedback ([ui-feedback](../ui-feedback/design.md)) only listen and read. Names are engine-neutral.
+
+| Event / state | Data | When |
+|---|---|---|
+| `dayStarted` | day, isBoss, trial | the shift scene is ready, before control is given |
+| `dayEnded` | day, income, overtimeForfeited, wreckFine, net, profitBefore, profitAfter, quota, verdict | the day ends (HQ or wreck); feeds the report |
+| `runEnded` | cause (quotaMissed, irisWon, charonBeaten), totals | after the Day 3 report or the boss race |
+| state | day, profit, cash, quota | read by the Garage hub and the report |
+
 ## Edge cases
 - Profit is never negative: a day with no deliveries banks 0.
 - Quitting to the menu mid-run loses the run; there is no mid-run save (D-032).

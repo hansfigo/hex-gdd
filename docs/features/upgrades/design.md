@@ -52,6 +52,17 @@ Between days the Garage is the player's hub: read the report, repair the van, ta
 | Hermes' Sandals | 220 | The van is 8% faster |
 | Golden Wings | 260 | Every delivery pays 15% more |
 
+## Events (logic → UI)
+The logic raises these; UI and feedback ([ui-feedback](../ui-feedback/design.md)) only listen and read. Names are engine-neutral.
+
+| Event / state | Data | When |
+|---|---|---|
+| `cardsOffered` | three cards | the card draw opens or a reroll lands |
+| `cardTaken` | card | the player picks |
+| `relicBought` | relic, price | a relic is bought |
+| `shieldChanged` | hasShield, ready, refill01 | the shield empties, refills or is first owned |
+| `shieldAbsorbed` | kind (normal, big) | the shield blocks a strike |
+
 ## Edge cases
 - Rerolling is only possible before the free pick.
 - If the pool is exhausted the offer shows fewer than 3 cards.

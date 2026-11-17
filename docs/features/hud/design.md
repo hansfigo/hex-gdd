@@ -4,6 +4,8 @@
 
 What the player sees while driving a shift. Only what changes a decision in the next few seconds is on screen; the run quota lives on the report and in the Garage. Serves **Simple to play** and **Bro thinks he's smart** (every risk the player takes is visible).
 
+<Wireframe name="shift-hud" />
+
 ## Rules
 1. The shift HUD shows exactly these elements (D-067):
    - **Time bar** with a marker that moves as the shift runs out. At 0 it is replaced by an **OVERTIME** label (red pulse).
