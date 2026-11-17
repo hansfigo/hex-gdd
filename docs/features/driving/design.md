@@ -12,7 +12,7 @@ An arcade van: grippy, quick to answer, glued to the road, never flips, and stil
 5. A boost cannot start below a minimum charge. Bars fill in order; only the current bar burns.
 6. Off the asphalt the van loses top speed and drags; steep slopes cost climbing power and the van slides back from slopes that are too steep, so players keep to the roads.
 7. The van slides along walls and fences instead of snagging on them.
-8. Upgrades change speed, grip and acceleration ([upgrades](../upgrades/design.md)); damage does not slow the van.
+8. Upgrades change speed, grip and acceleration ([upgrades](../upgrades/design.md)); damage states lower top speed ([damage-and-repair](../damage-and-repair/design.md), D-079).
 
 ## Numbers
 | Name | Value | Unit | What to watch in playtests |

@@ -9,6 +9,7 @@ const features: [string, string][] = [
   ['Day cycle, overtime and storm', 'day-cycle-and-storm'],
   ['Packages', 'packages'],
   ['Damage and repair', 'damage-and-repair'],
+  ['Hazards', 'hazards'],
   ['Driving', 'driving'],
   ['Upgrades', 'upgrades'],
   ['Boss day: Charon', 'boss-charon'],

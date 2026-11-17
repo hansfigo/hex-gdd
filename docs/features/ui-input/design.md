@@ -15,6 +15,7 @@ Keyboard (with mouse in menus) and gamepad are both supported in the MVP (D-068)
    | Pick up / deliver / end the day at HQ (`{interact}`) | E | A / Cross |
    | Drift (hold, `{drift}`) | Space | B / Circle |
    | Nitro (hold, `{nitro}`) | Left Shift or left mouse button | LB / L1 |
+   | Look around (camera orbit, D-077) | Mouse move | Right stick |
    | Pause (`{pause}`) | Esc | Start / Options |
 
 2. **Menu actions:** navigate with arrows, WASD or mouse / D-pad or left stick; `{confirm}` = Enter, Space or E / A; `{back}` = Esc / B; pick card or trial 1–3 = keys 1, 2, 3 / D-pad + A; `{skip}` (hold 1 s) = Tab / View button.

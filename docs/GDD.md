@@ -1,15 +1,15 @@
 # Hermes Express — Game Design Document
 
-**Version:** 0.7 · **Updated:** 2026-11-17 · [Features](#feature-index) · [Decisions](#decisions) · [Change log](#change-log)
+**Version:** 0.8 · **Updated:** 2026-11-17 · [Features](#feature-index) · [Decisions](#decisions) · [Change log](#change-log)
 
-This document and `features/` are the source of truth for the design (D-024). The Unity build is a prototype and a reference for starting numbers, not the spec. The original Indonesian GDD is kept unedited in `archive/GDD-v0-2026-10-23.md` (in the repository, not on the website).
+This document and the feature notes in `features/` are the single source of truth for Hermes Express's design (D-024). If the game or any other document disagrees with them, they win; change them first, then the game.
 
 ## Summary
 A survival delivery game where your cargo changes how you drive. Hermes, the messenger god demoted to a human courier, delivers the gods' packages in an old van through a modern Mount Olympus. Each short day he takes jobs at will, then decides whether to run home or push into a paid overtime hunted by Zeus's storm. Three days of work have to make one profit quota; meeting it earns a race against Iris on Charon's boss day. Missing it, or losing the race, restarts the run from Day 1.
 
 | | |
 |---|---|
-| Genre and camera | Roguelite arcade delivery driving, locked isometric 3D |
+| Genre and camera | Roguelite arcade delivery driving, full 3D, free third-person chase camera (like GTA) |
 | Audience | Casual to core PC players who like short runs and comedy |
 | Platforms and input | macOS, keyboard: 4 drive keys plus E to pick up and deliver |
 | Session | One run = 3 shifts of 60 s plus a 120 s boss shift plus Garage time, about 6–8 min (D-030) |
@@ -21,7 +21,7 @@ A survival delivery game where your cargo changes how you drive. Hermes, the mes
 1. **Push your luck.** Every day the player weighs going home on time against one more package or overtime, and taking a smuggled package that may be a scam but pays big. Rules out: safe, fixed routes with no temptation.
 2. **Simple to play.** Four drive keys plus E. Rules out: a second action layer that needs explaining.
 3. **Whimsical and comedic.** Humor comes from the blessing system and the scam packages, amplified by a cartoon low-poly style. Rules out: grim or realistic tone.
-4. **Bro thinks he's smart.** The player feels clever choosing packages and routes until the plan falls apart on the way home. Rules out: hiding the information the player needs to blame their own decision.
+4. **Bro thinks he's smart.** Overtime pays ×1.5, and the player always believes there is time for one more delivery before Zeus's storm catches up. Greed is the joke: the big money is right there, and so is the lightning. Rules out: any safe way to bank overtime money before reaching HQ.
 
 ## Core loop
 ```
@@ -49,6 +49,7 @@ Garage (repair, pick a card) → shift: pick up → deliver → money
 | UI feedback | designed | MVP | Event → visual, camera, sound table: scam reveal, wreck, overtime, hits, speed feel | [design](features/ui-feedback/design.md) |
 | UI input | designed | MVP | Keyboard + gamepad map (racing layout), menu controls, key-prompt tokens | [design](features/ui-input/design.md) |
 | First-run tutorial | idea | MVP | Day 1 script: two Safe packages, then Zeus, scripted strikes, blessing lost | — |
+| Hazards | designed | MVP | Modular catalogue: strike, big strike, boundary, crash; each with telegraph, effect, counters | [design](features/hazards/design.md) |
 | Map: Olympus | idea | MVP | One map, HQ, houses, palaces, Electrical Plant; a new, smaller, more city-like map replaces the prototype's; layout not specified | — |
 
 ## Milestones
@@ -73,7 +74,7 @@ Owners: Garage = [upgrades](features/upgrades/design.md) and [damage-and-repair]
 ## Direction
 - **Narrative:** Hermes once delivered the wrong package to the wrong god; Zeus took his godhood and his winged sandals and made him a courier for all the gods. Hera has her own messenger now, Iris, who is also his rival on the boss day. The quota is atonement; the storm is Zeus disliking couriers working after hours; the scam packages are Hermes taking grey-area jobs because he is desperate. Opening and game-over scenes tell this in short visual-novel pages; the ending is a four-line scene with Charon and Hermes.
 - **Art:** low-poly cartoon, visual direction C (modern), Greek identity carried by landmarks and ornaments.
-- **Camera and controls:** locked isometric, full 3D. Four drive keys plus E.
+- **Camera and controls:** third-person chase camera behind the van, free to orbit (mouse / right stick) and easing back behind the van when the player lets go, like GTA (D-077). Four drive keys plus E.
 - **Feedback:** a health bar and smoke show damage; a marker above each package shows its type, pay and direction.
 - **Audio:** engine sound, UI and lightning effects exist in the prototype; no audio design is written yet.
 
@@ -91,7 +92,7 @@ IDs run in sequence and are never reused. A superseded decision stays in the tab
 | D-007 | 2026-10-14 | MC = demoted Hermes; quota = atonement | — | Narrative explains quota, driving and grey areas | Direction |
 | D-008 | 2026-10-15 | Visual direction C (modern) | — | Greek identity through landmarks and ornaments | Direction |
 | D-009 | 2026-10-15 | Zeus package destination = Electrical Plant | — | The way home passes through the lightning field | [packages](features/packages/design.md) |
-| D-010 | 2026-10-15 | Locked isometric camera | — | Map and telegraphs always read from the same angle | Direction |
+| D-010 | 2026-10-15 | Locked isometric camera | — | Map and telegraphs always read from the same angle → superseded by D-077 | Direction |
 | D-011 | 2026-10-15 | Feature complete 25 Oct, plan B checkpoint 22 Oct | — | TypeCaster insight: half the time left is buffer → obsolete, dates passed | — |
 | D-012 | 2026-10-16 | Full 3D | 2D | Native sorting, collision, lighting, physics; avoids 2D/3D cohesion problems | Direction |
 | D-013 | 2026-10-21 | Daily quota, 7 days, miss = game over | — | A clear roguelike; pressure every day → superseded by D-025 | [run-and-quota](features/run-and-quota/design.md) |
@@ -158,6 +159,10 @@ IDs run in sequence and are never reused. A superseded decision stays in the tab
 | D-074 | 2026-11-17 | In-game text is English only | Indonesian; both with a language switch | One language for the MVP, same as the docs | [ui-screens](features/ui-screens/design.md) |
 | D-075 | 2026-11-17 | Package markers show only a type box (blue Safe, red devil Chance, gold crown Zeus) and 1–3 pay coins; the Chance failure chance is hidden (no skulls, no %) | skulls; failure % on the marker | User testing: players read only the money and ignored the risk icons | [packages](features/packages/design.md), [ui-screens](features/ui-screens/design.md) |
 | D-076 | 2026-11-17 | One package per E press; several packages in reach need one press each (deliver first, then nearest pickup) | one press handles every package in reach | Each pickup and delivery stays a deliberate action, also for markers placed close together | [packages](features/packages/design.md) |
+| D-077 | 2026-11-17 | Camera: free third-person chase camera behind the van (orbit with mouse / right stick, eases back behind), like GTA | locked isometric (D-010) | Owner pivot; speed and the city read better from behind the wheel | Direction, [hazards](features/hazards/design.md) |
+| D-078 | 2026-11-17 | Pillar "Bro thinks he's smart" is about overtime greed: one more delivery before the storm | clever package and route choices | Overtime is where the game's biggest risk and reward meet | Pillars, [day-cycle-and-storm](features/day-cycle-and-storm/design.md) |
+| D-079 | 2026-11-17 | Damage states lower top speed: dented −10%, badly damaged −25% | HP only costs money | Damage is felt while driving, not only in the Garage | [damage-and-repair](features/damage-and-repair/design.md), [driving](features/driving/design.md) |
+| D-080 | 2026-11-17 | Hazards are a modular catalogue (one module per hazard); schedules stay in trials and day-cycle and refer to hazards by id | hazard rules spread across the features that spawn them | One home per hazard; new hazards plug in without touching schedulers | [hazards](features/hazards/design.md) |
 
 ## Open questions
 - **Assumptions to confirm:** design questions were settled on 2026-11-17 (D-030 to D-045). What remains are prototype tuning numbers: run quota $600, 120 s boss shift, Safe pay and the 0.65 multiplier, open pickups and spawn interval, storm numbers, HP amounts and repair price, Gamble chance, reroll price, card and relic numbers, Iris's pace; plus the audience and the time bar on the HUD.
@@ -167,6 +172,7 @@ IDs run in sequence and are never reused. A superseded decision stays in the tab
 - **Other open items from the old GDD:** third hazard (needed or not); anti-pillars; playtest success criteria; a tuning-numbers table (this version puts numbers in each feature note).
 
 ## Change log
+**0.8 (2026-11-17):** Chase camera (D-077), overtime-greed pillar (D-078), damage slows the van (D-079), hazards catalogue (D-080).
 **0.7 (2026-11-17):** One package per E press (D-076).
 **0.6 (2026-11-17):** Package markers: type box + pay coins, Chance risk hidden after user testing (D-075).
 **0.5 (2026-11-17):** UI guide for UI programmers: ui-screens with graybox wireframes, ui-feedback, ui-input, and an Events (logic → UI) section in every gameplay spec (D-068 to D-074).
