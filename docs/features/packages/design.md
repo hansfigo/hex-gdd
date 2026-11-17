@@ -12,7 +12,8 @@ Packages appear at pickup markers around the map (the Crazy Taxi model). The pla
 5. **Spawning:** the map keeps a target number of open pickups (set by the trial's intensity, see [trials](../trials/design.md)) and adds one new job every spawn interval while below the target. At least one open pickup is always within 60 m of the van [TUNE]. No new jobs are added once 15 s or less of the shift are left.
 6. **Mix** (D-059): each new job is Chance with 25% chance from Day 2 on (0% on Day 1), otherwise Safe. Zeus is not part of the random mix: exactly one Zeus job spawns per normal day, on Day 1 at the start of the shift and on Day 2–3 at a random time between 10 s and 30 s into the shift [TUNE]. At most one Zeus job exists at a time.
 7. **Routes:** a pickup is placed 15–110 m from the van; its destination is 60–250 m from the pickup and at least 45 m from HQ [TUNE: prototype values; re-measure on the new city map].
-8. Every marker shows the package type, its pay, and an arrow to its destination. A Chance marker also shows its tier as 1, 2 or 3 skulls and the failure percentage.
+8. **Marker** (D-075): every pickup shows a box icon for its type (Safe: blue box with the Hermes Express logo; Chance: red box with a devil; Zeus: gold box with a crown) and 1–3 coins above it for its pay level. The failure chance of a Chance package is **not** shown, neither as skulls nor as a percentage: players in testing read only the money. A carried package shows an arrow to its destination.
+   `coins = 1 if basePay < 1.5 × safeAvg else 2 if basePay < 5 × safeAvg else 3`, where `safeAvg` is the middle of the Safe base pay range (14.5).
 9. **Safe:** pays a random whole amount from the Safe pay range.
 10. **Zeus (god package, Offering):** pickup at Zeus's palace, destination the Electrical Plant. From pickup, the van has the **Zeus ward**: lightning that would hit it is turned away (golden aura, RESIST pop-up). The ward ends on delivery or after the ward duration, whichever comes first. *The blessing belonged to the package, not you.*
 11. **Chance (scam):** on spawn each Chance job gets a tier (1, 2 or 3, equally likely [TUNE]) with its failure chance (D-034) and its pay: `chancePay = round(rollSafePay() × tierMultiplier)` (D-061). At delivery roll once: success pays; failure pays nothing, costs the van 2 HP (D-035) and throws it into the air as feedback. A slot-machine reveal plays either way.
@@ -26,7 +27,8 @@ Packages appear at pickup markers around the map (the Crazy Taxi model). The pla
 |---|---|---|---|
 | Safe package base pay | 10–19, whole dollars | $ | Income per minute vs the run quota |
 | Zeus package base pay | 20–34, about 2× Safe (D-036) | $ | Worth the detour on the smaller city map |
-| Chance (scam) package failure chance, tier 1 / 2 / 3 | 10 / 25 / 50 (D-034) | % | Share of players who take each tier |
+| Chance (scam) package failure chance, tier 1 / 2 / 3 (hidden from the player, D-075) | 10 / 25 / 50 (D-034) | % | Share of players who take each tier |
+| Coin thresholds: 2 coins from / 3 coins from | 1.5× / 5× the Safe average base pay [TUNE] | × | Safe = 1 coin, Zeus and Chance tiers 1–2 = 2 coins, Chance tier 3 = 3 coins |
 | Chance (scam) package pay multiplier on a Safe roll, tier 1 / 2 / 3 | ×2 / ×4 / ×9 (D-061) [TUNE] | factor | Each tier's expected value should sit a little above a Safe job |
 | Chance (scam) package share of new jobs, Day 2–3 | 25 (D-059) [TUNE] | % | |
 | Zeus jobs per normal day | 1 (D-059) | jobs | |
@@ -64,4 +66,5 @@ The logic raises these; UI and feedback ([ui-feedback](../ui-feedback/design.md)
 
 ## History
 - 2026-11-17: designed. D-028 (unlimited cargo) supersedes the 3-slot capacity and Zeus's 2 slots (D-020); D-027 restores the intent of D-017.
+- 2026-11-17: marker shows type box + coins only; failure chance hidden after user testing (D-075).
 - 2026-11-17: made implementable: interact without stopping (D-060), job mix and Zeus once per day (D-059), Chance pay formula (D-061), full pay formula, route distances.

@@ -1,6 +1,6 @@
 # Hermes Express — Game Design Document
 
-**Version:** 0.5 · **Updated:** 2026-11-17 · [Features](#feature-index) · [Decisions](#decisions) · [Change log](#change-log)
+**Version:** 0.6 · **Updated:** 2026-11-17 · [Features](#feature-index) · [Decisions](#decisions) · [Change log](#change-log)
 
 This document and `features/` are the source of truth for the design (D-024). The Unity build is a prototype and a reference for starting numbers, not the spec. The original Indonesian GDD is kept unedited in `archive/GDD-v0-2026-10-23.md` (in the repository, not on the website).
 
@@ -98,7 +98,7 @@ IDs run in sequence and are never reused. A superseded decision stays in the tab
 | D-014 | 2026-10-21 | Angry meter removed | — | Escalation from hazard location and time is enough | — |
 | D-015 | 2026-10-21 | HP removed; damage = 3 states + surprise bill | — | One losing condition; carelessness is paid in money → superseded by D-026 | [damage-and-repair](features/damage-and-repair/design.md) |
 | D-016 | 2026-10-21 | Three package categories: Safe, Skill, Chance | — | Three kinds of risk: safe, skill, chance | [packages](features/packages/design.md) |
-| D-017 | 2026-10-21 | Smuggled packages show a visible scam %; scam = damage | — | A bet with full information, so players blame their own decision | [packages](features/packages/design.md) |
+| D-017 | 2026-10-21 | Smuggled packages show a visible scam %; scam = damage | — | A bet with full information, so players blame their own decision → visible % superseded by D-075 | [packages](features/packages/design.md) |
 | D-018 | 2026-10-21 | HQ only spawn + upgrade; random packages, pickup by stopping + E | — | Spontaneous decisions; a clear HQ/map split | [packages](features/packages/design.md) |
 | D-019 | 2026-10-21 | Must return to HQ; overtime hunted by Zeus's storm | — | The way home matters again; the Zeus hook stays whole; the storm reuses lightning | [day-cycle-and-storm](features/day-cycle-and-storm/design.md) |
 | D-020 | 2026-10-21 | God packages take 2 slots | — | The price of holding the blessing reads without extra UI → superseded by D-028 | [packages](features/packages/design.md) |
@@ -115,7 +115,7 @@ IDs run in sequence and are never reused. A superseded decision stays in the tab
 | D-031 | 2026-11-17 | Cash = all banked net income; spending never lowers profit | only surplus above the daily pace; one wallet (D-005) | Repair and relics stay affordable without slowing the quota | [run-and-quota](features/run-and-quota/design.md), [upgrades](features/upgrades/design.md) |
 | D-032 | 2026-11-17 | No mid-run save: quitting to the menu loses the run | autosave in the Garage | A run is short; saves are not worth the MVP cost | [run-and-quota](features/run-and-quota/design.md) |
 | D-033 | 2026-11-17 | Game over first shows the cause and the run totals, then the cutscene | cutscene only | The player must see why the run ended (roguelike rule) | [run-and-quota](features/run-and-quota/design.md) |
-| D-034 | 2026-11-17 | Chance packages use three fixed risk tiers: 10 / 25 / 50% | random 0–100% (prototype); random within 5–60% | Readable at a glance (skulls); no absurd offers | [packages](features/packages/design.md) |
+| D-034 | 2026-11-17 | Chance packages use three fixed risk tiers: 10 / 25 / 50% | random 0–100% (prototype); random within 5–60% | Readable at a glance; no absurd offers. Tiers stay; showing them → superseded by D-075 | [packages](features/packages/design.md) |
 | D-035 | 2026-11-17 | A failed Chance delivery costs 2 HP | 1 HP; scaled by tier | The loss must bite: about $60 of repair | [packages](features/packages/design.md), [damage-and-repair](features/damage-and-repair/design.md) |
 | D-036 | 2026-11-17 | Zeus pays a medium amount, about 2× Safe | about 5× Safe | The new map is smaller and city-like, so the detour is short | [packages](features/packages/design.md) |
 | D-037 | 2026-11-17 | A failed Chance delivery may wreck the van | HP stops at 1 | Risk and HP are both visible; the player owns the choice | [packages](features/packages/design.md) |
@@ -156,6 +156,7 @@ IDs run in sequence and are never reused. A superseded decision stays in the tab
 | D-072 | 2026-11-17 | Pause menu: Resume, Controls, Settings, Quit to menu (with a confirm) | Restart run; Resume and Quit only | Covers the basics without a mid-run restart shortcut | [ui-screens](features/ui-screens/design.md) |
 | D-073 | 2026-11-17 | Settings: master / music / effects volume; fullscreen or windowed and resolution. No rebinding, no vibration | also vibration toggle; tutorial toggle | The minimum a Mac game needs | [ui-screens](features/ui-screens/design.md), [ui-input](features/ui-input/design.md) |
 | D-074 | 2026-11-17 | In-game text is English only | Indonesian; both with a language switch | One language for the MVP, same as the docs | [ui-screens](features/ui-screens/design.md) |
+| D-075 | 2026-11-17 | Package markers show only a type box (blue Safe, red devil Chance, gold crown Zeus) and 1–3 pay coins; the Chance failure chance is hidden (no skulls, no %) | skulls; failure % on the marker | User testing: players read only the money and ignored the risk icons | [packages](features/packages/design.md), [ui-screens](features/ui-screens/design.md) |
 
 ## Open questions
 - **Assumptions to confirm:** design questions were settled on 2026-11-17 (D-030 to D-045). What remains are prototype tuning numbers: run quota $600, 120 s boss shift, Safe pay and the 0.65 multiplier, open pickups and spawn interval, storm numbers, HP amounts and repair price, Gamble chance, reroll price, card and relic numbers, Iris's pace; plus the audience and the time bar on the HUD.
@@ -165,6 +166,7 @@ IDs run in sequence and are never reused. A superseded decision stays in the tab
 - **Other open items from the old GDD:** third hazard (needed or not); anti-pillars; playtest success criteria; a tuning-numbers table (this version puts numbers in each feature note).
 
 ## Change log
+**0.6 (2026-11-17):** Package markers: type box + pay coins, Chance risk hidden after user testing (D-075).
 **0.5 (2026-11-17):** UI guide for UI programmers: ui-screens with graybox wireframes, ui-feedback, ui-input, and an Events (logic → UI) section in every gameplay spec (D-068 to D-074).
 **0.4 (2026-11-17):** Made implementable: interact, job mix, pay formula, shift lightning, escalation formula, Garage and boss rules, HUD spec (D-058 to D-067).
 **0.3 (2026-11-17):** Lightning shield with refill, trial reward budget, driving with drift and nitro (D-050 to D-057).

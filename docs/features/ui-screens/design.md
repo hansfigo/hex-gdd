@@ -27,7 +27,7 @@ Every screen and overlay the player sees, what is on it, how it is driven, and w
    <Wireframe name="card-draw" />
 9. **Trial select** (Day 2–3): three trial cards, each with a name and danger / value / intensity as 1–3 pluses; an info line explains the focused dial in plain words. Pick with click, 1 / 2 / 3, or D-pad + `{confirm}`; the shift loads at once. `{back}` returns to the hub. Rules: [trials](../trials/design.md).
    <Wireframe name="trial-select" />
-10. **Shift:** the HUD ([hud](../hud/design.md)) plus world markers on pickups and drops ([packages](../packages/design.md)): a light beam above each marker, a screen-space label (type, pay, skulls and failure % for Chance), and a floating `{interact}` keycap while the van is inside a zone. Off-screen targets are covered by the HUD direction arrow.
+10. **Shift:** the HUD ([hud](../hud/design.md)) plus world markers on pickups and drops ([packages](../packages/design.md)): a light beam above each marker, a screen-space label (type box and 1–3 pay coins; no risk shown, D-075), and a floating `{interact}` keycap while the van is inside a zone. Off-screen targets are covered by the HUD direction arrow.
     <Wireframe name="shift-hud" />
 11. **Scam reveal:** on delivering a Chance package, time slows and a three-reel slot machine appears over the van; the reels stop one by one and the result is the real roll (JACKPOT and the pay, or BUST and −2 HP). No input; play resumes when it ends.
     <Wireframe name="scam-reveal" />

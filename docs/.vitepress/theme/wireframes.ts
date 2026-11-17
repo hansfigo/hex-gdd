@@ -98,7 +98,7 @@ export const screens: Record<string, Screen> = {
       { x: 76, y: 87, w: 22, h: 8, label: 'Nitro ▮▮▯', kind: 'box' },
       { x: 45, y: 4, w: 10, h: 10, label: '↑', note: 'direction arrow', kind: 'box' },
       { x: 40, y: 44, w: 14, h: 14, label: 'Van', kind: 'world' },
-      { x: 62, y: 30, w: 10, h: 12, label: 'Marker', note: 'type · $ · skulls', kind: 'world' },
+      { x: 62, y: 30, w: 10, h: 12, label: 'Marker', note: 'type box · 1–3 coins', kind: 'world' },
       { x: 20, y: 58, w: 10, h: 12, label: 'Strike ring', note: 'ground warning', kind: 'world' },
       { x: 28, y: 76, w: 44, h: 8, label: 'Dialogue strip', note: 'barks and tutorial lines', kind: 'box' },
     ],
@@ -110,7 +110,7 @@ export const screens: Record<string, Screen> = {
     world: true,
     regions: [
       { x: 30, y: 22, w: 40, h: 40, label: '', kind: 'panel' },
-      { x: 33, y: 26, w: 34, h: 8, label: 'Smuggled package · 25%', kind: 'text' },
+      { x: 33, y: 26, w: 34, h: 8, label: 'Smuggled package · ●●', kind: 'text' },
       { x: 34, y: 37, w: 10, h: 18, label: 'Reel 1', kind: 'box' },
       { x: 45, y: 37, w: 10, h: 18, label: 'Reel 2', kind: 'box' },
       { x: 56, y: 37, w: 10, h: 18, label: 'Reel 3', kind: 'box' },

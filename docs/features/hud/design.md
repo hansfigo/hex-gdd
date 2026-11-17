@@ -14,7 +14,7 @@ What the player sees while driving a shift. Only what changes a decision in the 
    - **Nitro bars:** one bar per nitro bar the van has, filling left to right ([driving](../driving/design.md)).
    - **Direction arrow:** points to the nearest destination of a carried package; with nothing carried, to the nearest open pickup. In overtime with nothing carried, it points to HQ.
 2. The shift HUD does **not** show the run quota, a pace bar or the day's profit target (D-067).
-3. World markers on packages (type, pay, skulls and failure % for Chance) are part of [packages](../packages/design.md), not of this HUD.
+3. World markers on packages (type box and 1–3 pay coins, D-075) are part of [packages](../packages/design.md), not of this HUD.
 4. Boss day: the time bar, HP, shield and nitro stay; today's earnings is replaced by the soul race bar (Hermes vs Iris, out of 12) ([boss-charon](../boss-charon/design.md)).
 5. The chosen trial's three dials are shown small under the time bar on Day 2–3 ([trials](../trials/design.md)).
 
