@@ -38,7 +38,7 @@ What the player sees, hears and feels when something happens. Each row names the
 | Camera FOV at rest → top speed | +0 → +10 [TUNE] | degrees | Motion sickness complaints |
 
 ## Edge cases
-- Two scam deliveries in one E press: the reveals play one after another; money lands after each.
+- Two scam deliveries pressed quickly one after another: the second reveal waits for the first to end; money lands after each.
 - A strike lands during the scam reveal: it is held until the reveal ends (time is slowed anyway).
 - Pause during slow motion is blocked until it ends (see [ui-screens](../ui-screens/design.md)).
 

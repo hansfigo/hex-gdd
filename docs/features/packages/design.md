@@ -6,7 +6,7 @@ Packages appear at pickup markers around the map (the Crazy Taxi model). The pla
 
 ## Rules
 1. **Interact (E):** pressing E while the van is inside a marker's zone picks the package up (pickup marker) or delivers it (destination marker). The van does **not** need to slow down or stop: the game is fast-paced (D-060). Leniency: the zone counts 1 m wider than drawn, a press up to 0.4 s after leaving the zone still counts, and a press up to 0.3 s before entering is buffered and fires on arrival.
-2. If several actions are possible at once, E does all of them in one press: deliver every carried package whose destination is here, then pick up every package here.
+2. **One package per press** (D-076): each E press picks up or delivers exactly one package. When several are in reach (markers close together, or several carried packages for the same stop), the player presses E once per package. Order when more than one is possible: deliver before pick up; among deliveries, the one carried longest first; among pickups, the nearest marker first [TUNE]. The interact leniency (rule 1) applies to every press, and a press buffered while a scam reveal plays fires after it ends.
 3. Money is paid on delivery, never on pickup.
 4. **Cargo is unlimited** (D-028): no slot limit, no weight.
 5. **Spawning:** the map keeps a target number of open pickups (set by the trial's intensity, see [trials](../trials/design.md)) and adds one new job every spawn interval while below the target. At least one open pickup is always within 60 m of the van [TUNE]. No new jobs are added once 15 s or less of the shift are left.
@@ -54,5 +54,6 @@ Packages appear at pickup markers around the map (the Crazy Taxi model). The pla
 
 ## History
 - 2026-11-17: designed. D-028 (unlimited cargo) supersedes the 3-slot capacity and Zeus's 2 slots (D-020); D-027 restores the intent of D-017.
+- 2026-11-17: one package per E press (D-076).
 - 2026-11-17: marker shows type box + coins only; failure chance hidden after user testing (D-075).
 - 2026-11-17: made implementable: interact without stopping (D-060), job mix and Zeus once per day (D-059), Chance pay formula (D-061), full pay formula, route distances.

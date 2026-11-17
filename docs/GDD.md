@@ -1,6 +1,6 @@
 # Hermes Express — Game Design Document
 
-**Version:** 0.6 · **Updated:** 2026-11-17 · [Features](#feature-index) · [Decisions](#decisions) · [Change log](#change-log)
+**Version:** 0.7 · **Updated:** 2026-11-17 · [Features](#feature-index) · [Decisions](#decisions) · [Change log](#change-log)
 
 This document and `features/` are the source of truth for the design (D-024). The Unity build is a prototype and a reference for starting numbers, not the spec. The original Indonesian GDD is kept unedited in `archive/GDD-v0-2026-10-23.md` (in the repository, not on the website).
 
@@ -157,6 +157,7 @@ IDs run in sequence and are never reused. A superseded decision stays in the tab
 | D-073 | 2026-11-17 | Settings: master / music / effects volume; fullscreen or windowed and resolution. No rebinding, no vibration | also vibration toggle; tutorial toggle | The minimum a Mac game needs | [ui-screens](features/ui-screens/design.md), [ui-input](features/ui-input/design.md) |
 | D-074 | 2026-11-17 | In-game text is English only | Indonesian; both with a language switch | One language for the MVP, same as the docs | [ui-screens](features/ui-screens/design.md) |
 | D-075 | 2026-11-17 | Package markers show only a type box (blue Safe, red devil Chance, gold crown Zeus) and 1–3 pay coins; the Chance failure chance is hidden (no skulls, no %) | skulls; failure % on the marker | User testing: players read only the money and ignored the risk icons | [packages](features/packages/design.md), [ui-screens](features/ui-screens/design.md) |
+| D-076 | 2026-11-17 | One package per E press; several packages in reach need one press each (deliver first, then nearest pickup) | one press handles every package in reach | Each pickup and delivery stays a deliberate action, also for markers placed close together | [packages](features/packages/design.md) |
 
 ## Open questions
 - **Assumptions to confirm:** design questions were settled on 2026-11-17 (D-030 to D-045). What remains are prototype tuning numbers: run quota $600, 120 s boss shift, Safe pay and the 0.65 multiplier, open pickups and spawn interval, storm numbers, HP amounts and repair price, Gamble chance, reroll price, card and relic numbers, Iris's pace; plus the audience and the time bar on the HUD.
@@ -166,6 +167,7 @@ IDs run in sequence and are never reused. A superseded decision stays in the tab
 - **Other open items from the old GDD:** third hazard (needed or not); anti-pillars; playtest success criteria; a tuning-numbers table (this version puts numbers in each feature note).
 
 ## Change log
+**0.7 (2026-11-17):** One package per E press (D-076).
 **0.6 (2026-11-17):** Package markers: type box + pay coins, Chance risk hidden after user testing (D-075).
 **0.5 (2026-11-17):** UI guide for UI programmers: ui-screens with graybox wireframes, ui-feedback, ui-input, and an Events (logic → UI) section in every gameplay spec (D-068 to D-074).
 **0.4 (2026-11-17):** Made implementable: interact, job mix, pay formula, shift lightning, escalation formula, Garage and boss rules, HUD spec (D-058 to D-067).
