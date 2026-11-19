@@ -50,6 +50,7 @@ Garage (repair, pick a card) → shift: pick up → deliver → money
 | UI input | designed | MVP | Keyboard + gamepad map (racing layout), menu controls, key-prompt tokens | [design](features/ui-input/design.md) |
 | First-run tutorial | idea | MVP | Day 1 script: two Safe packages, then Zeus, scripted strikes, blessing lost | — |
 | Hazards | designed | MVP | Modular catalogue: strike, big strike, boundary, crash; each with telegraph, effect, counters | [design](features/hazards/design.md) |
+| Audio | idea | MVP | Sound and music list by trigger: music, van, packages, hazards, world, UI and voice; mix buses | [design](features/audio/design.md) |
 | Map: Olympus | idea | MVP | One map, HQ, houses, palaces, Electrical Plant; a new, smaller, more city-like map replaces the prototype's; layout not specified | — |
 
 ## Milestones
@@ -163,6 +164,7 @@ IDs run in sequence and are never reused. A superseded decision stays in the tab
 | D-078 | 2026-11-17 | Pillar "Bro thinks he's smart" is about overtime greed: one more delivery before the storm | clever package and route choices | Overtime is where the game's biggest risk and reward meet | Pillars, [day-cycle-and-storm](features/day-cycle-and-storm/design.md) |
 | D-079 | 2026-11-17 | Damage states lower top speed: dented −10%, badly damaged −25% | HP only costs money | Damage is felt while driving, not only in the Garage | [damage-and-repair](features/damage-and-repair/design.md), [driving](features/driving/design.md) |
 | D-080 | 2026-11-17 | Hazards are a modular catalogue (one module per hazard); schedules stay in trials and day-cycle and refer to hazards by id | hazard rules spread across the features that spawn them | One home per hazard; new hazards plug in without touching schedulers | [hazards](features/hazards/design.md) |
+| D-081 | 2026-11-19 | Audio is one spec listing every sound and music cue by trigger, with mix buses and priority rules | sound rows spread inside each feature | One checklist for the audio work; triggers reuse the event names from the other specs | [audio](features/audio/design.md) |
 
 ## Open questions
 - **Assumptions to confirm:** design questions were settled on 2026-11-17 (D-030 to D-045). What remains are prototype tuning numbers: run quota $600, 120 s boss shift, Safe pay and the 0.65 multiplier, open pickups and spawn interval, storm numbers, HP amounts and repair price, Gamble chance, reroll price, card and relic numbers, Iris's pace; plus the audience and the time bar on the HUD.

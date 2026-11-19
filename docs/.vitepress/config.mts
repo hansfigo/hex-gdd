@@ -10,6 +10,7 @@ const features: [string, string][] = [
   ['Packages', 'packages'],
   ['Damage and repair', 'damage-and-repair'],
   ['Hazards', 'hazards'],
+  ['Audio', 'audio'],
   ['Driving', 'driving'],
   ['Upgrades', 'upgrades'],
   ['Boss day: Charon', 'boss-charon'],
